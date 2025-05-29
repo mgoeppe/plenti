@@ -56,12 +56,4 @@ func ParseFields() []plenticore.Fields {
 
 func init() {
 	rootCmd.AddCommand(dataCmd)
-
-	// Local flags
-	dataCmd.Flags().BoolP("save", "d", false, "Save data to database")
-	dataCmd.Flags().StringP("output", "o", "", "Output file path for JSON data")
-
-	// Bind flags to viper config
-	viper.BindPFlag("saveToDb", dataCmd.Flags().Lookup("save"))
-	viper.BindPFlag("outputFile", dataCmd.Flags().Lookup("output"))
 }
