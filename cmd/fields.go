@@ -1,9 +1,6 @@
 package cmd
 
 import (
-	"fmt"
-
-	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
@@ -16,10 +13,9 @@ var fieldsCmd = &cobra.Command{
 		// Client is already initialized in the root command's PersistentPreRun
 
 		modules := commandCtx.Client.Fields()
-		logrus.Info("Available fields from Plenticore:")
 		for _, module := range modules {
 			for _, fieldID := range module.FieldIDs {
-				fmt.Printf("- %s/%s\n", module.ModuleID, fieldID)
+				cmd.Printf("- %s/%s\n", module.ModuleID, fieldID)
 			}
 		}
 	},

@@ -145,7 +145,7 @@ func NewClientOrDie(server, password string) *Client {
 		logrus.Fatalf("could not create session: %v", err)
 	}
 	c.sessionID = createSessionResponse.SessionID
-	logrus.Info("Logged in successfully")
+	logrus.Debug("Logged in successfully")
 
 	return c
 }
@@ -155,7 +155,7 @@ func (c *Client) Close() {
 	if err != nil {
 		logrus.Errorf("Unable to log out: %v", err)
 	} else {
-		logrus.Info("Logged out successfully")
+		logrus.Debug("Logged out successfully")
 	}
 	c.sessionID = ""
 }
@@ -174,12 +174,25 @@ func (c *Client) Fields() []Fields {
 	return res
 }
 
-func (c *Client) Data(fields []Fields) {
-	err := c.DoRequest(c.apiURL+"/processdata", "POST", fields, nil)
+type DataField struct {
+	ID    string  `json:"id"`
+	Unit  string  `json:"unit"`
+	Value float64 `json:"value"`
+}
+
+type Data struct {
+	ModuleID string      `json:"moduleid"`
+	Fields   []DataField `json:"processdata"`
+}
+
+func (c *Client) Data(fields []Fields) []Data {
+	res := make([]Data, 0)
+	err := c.DoRequest(c.apiURL+"/processdata", "POST", fields, &res)
 	if err != nil {
 		logrus.Errorf("Failed to retrieve data: %v", err)
-		return
+		return res
 	}
+	return res
 }
 
 func (c *Client) DoRequest(url string, method string, in any, out any) error {
