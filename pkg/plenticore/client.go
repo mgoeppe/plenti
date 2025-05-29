@@ -160,18 +160,26 @@ func (c *Client) Close() {
 	c.sessionID = ""
 }
 
-type Module struct {
-	ID       string   `json:"moduleid"`
+type Fields struct {
+	ModuleID string   `json:"moduleid"`
 	FieldIDs []string `json:"processdataids"`
 }
 
-func (c *Client) ProcessData() []Module {
-	res := make([]Module, 0)
+func (c *Client) Fields() []Fields {
+	res := make([]Fields, 0)
 	err := c.DoRequest(c.apiURL+"/processdata", "GET", nil, &res)
 	if err != nil {
 		logrus.Errorf("Failed to process data: %v", err)
 	}
 	return res
+}
+
+func (c *Client) Data(fields []Fields) {
+	err := c.DoRequest(c.apiURL+"/processdata", "POST", fields, nil)
+	if err != nil {
+		logrus.Errorf("Failed to retrieve data: %v", err)
+		return
+	}
 }
 
 func (c *Client) DoRequest(url string, method string, in any, out any) error {

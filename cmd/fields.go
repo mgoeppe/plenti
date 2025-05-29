@@ -8,27 +8,27 @@ import (
 	"github.com/spf13/viper"
 )
 
-var dataCmd = &cobra.Command{
+var fieldsCmd = &cobra.Command{
 	Use:   "fields",
 	Short: "List fields from Plenticore",
 	Long:  `List all fields provided by the Plenticore inverter API. These fields can be used to configure filtering in your queries.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		// Client is already initialized in the root command's PersistentPreRun
 
-		modules := commandCtx.Client.ProcessData()
+		modules := commandCtx.Client.Fields()
 		logrus.Info("Available fields from Plenticore:")
 		for _, module := range modules {
 			for _, fieldID := range module.FieldIDs {
-				fmt.Printf("- %s/%s\n", module.ID, fieldID)
+				fmt.Printf("- %s/%s\n", module.ModuleID, fieldID)
 			}
 		}
 	},
 }
 
 func init() {
-	rootCmd.AddCommand(dataCmd)
+	rootCmd.AddCommand(fieldsCmd)
 
 	// Local flags
-	dataCmd.Flags().BoolP("save", "d", false, "Save data to database")
-	viper.BindPFlag("saveToDb", dataCmd.Flags().Lookup("save"))
+	fieldsCmd.Flags().BoolP("save", "d", false, "Save field list to database")
+	viper.BindPFlag("saveFieldsToDb", fieldsCmd.Flags().Lookup("save"))
 }
