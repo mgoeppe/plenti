@@ -5,7 +5,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/matoubidou/plenticore-to-db/pkg/plenticore"
+	"github.com/matoubidou/plenti/pkg/plenticore"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -19,7 +19,7 @@ type CommandContext struct {
 var commandCtx CommandContext
 
 var rootCmd = &cobra.Command{
-	Use:   "plenticore-to-db",
+	Use:   "plenti",
 	Short: "A tool to interact with Plenticore API",
 	Long: `A tool for authenticating with and retrieving data from
 the Plenticore inverter API, and optionally storing the data in a database.`,

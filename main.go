@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/matoubidou/plenticore-to-db/cmd"
+	"github.com/matoubidou/plenti/cmd"
 )
 
 func main() {
