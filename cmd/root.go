@@ -67,21 +67,30 @@ func init() {
 	rootCmd.PersistentFlags().StringP("server", "s", "", "Plenticore server address")
 	rootCmd.PersistentFlags().StringP("password", "p", "", "Plenticore password")
 	rootCmd.PersistentFlags().String("log-level", "info", "Log level (debug, info, warn, error)")
+	rootCmd.PersistentFlags().StringP("config-path", "c", ".", "Path to directory containing plenti.yaml config file")
 
 	// Bind flags to viper config
 	viper.BindPFlag("plenticore.server", rootCmd.PersistentFlags().Lookup("server"))
 	viper.BindPFlag("plenticore.password", rootCmd.PersistentFlags().Lookup("password"))
 	viper.BindPFlag("logLevel", rootCmd.PersistentFlags().Lookup("log-level"))
+	viper.BindPFlag("configPath", rootCmd.PersistentFlags().Lookup("config-path"))
 }
 
 func initConfig() {
 	// Set default configuration path and name
-	viper.SetConfigName("config")
+	viper.SetConfigName("plenti")
 	viper.SetConfigType("yaml")
-	viper.AddConfigPath(".")
+
+	// Add the config path from flag or use default
+	configPath := viper.GetString("configPath")
+	if configPath == "" {
+		configPath = "."
+	}
+	viper.AddConfigPath(configPath)
 
 	// Set default values
 	viper.SetDefault("logLevel", "info")
+	viper.SetDefault("configPath", ".")
 
 	// Read environment variables with prefix PLENTICORE_
 	viper.SetEnvPrefix("PLENTICORE")

@@ -36,7 +36,7 @@ var saveCmd = &cobra.Command{
 		// Initialize the database connection
 		dbPath := viper.GetString("database.path")
 		if dbPath == "" {
-			dbPath = "plenticore.db"
+			dbPath = "plenti.db"
 			logrus.Infof("No database path specified, using default: %s", dbPath)
 		}
 
@@ -128,7 +128,7 @@ func init() {
 
 	// Add flags specific to the save command
 	saveCmd.Flags().Bool("summary", false, "Print a summary after saving")
-	saveCmd.Flags().StringP("database", "d", "plenticore.db", "Database file path")
+	saveCmd.Flags().StringP("database", "d", "plenti.db", "Database file path")
 	saveCmd.Flags().StringP("interval", "i", "", "Run continuously with the specified interval (e.g. '30s', '5m', '1h')")
 
 	// Bind flags to viper config
