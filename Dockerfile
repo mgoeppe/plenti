@@ -1,7 +1,12 @@
 FROM golang:1.24-alpine as builder
 
+# Install build dependencies for SQLite with CGO
+RUN apk add --no-cache gcc musl-dev
+
 WORKDIR /app
 COPY . .
+
+ENV CGO_ENABLED=1
 RUN go build -o plenti
 
 FROM alpine:3.17
