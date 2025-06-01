@@ -146,3 +146,15 @@ docker run -d \
 
 - `/config`: Mount directory containing your `plenti.yaml` configuration file
 - `/data`: Mount point for the database storage
+
+Make sure to configure all settings (including database path and interval) in your `plenti.yaml` file within the mounted config directory. For example:
+
+```yaml
+plenticore:
+  server: "inverter.local"
+  password: "yourpassword"
+database:
+  path: "/data/plenti.db"  # Note the path points to the data volume
+  interval: "5m"           # Save data every 5 minutes
+  printSummary: true
+```

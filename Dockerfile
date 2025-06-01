@@ -24,4 +24,4 @@ VOLUME /config
 VOLUME /data
 
 # Set entrypoint to use config from the specified location
-ENTRYPOINT ["/bin/sh", "-c", "/app/plenti save --config-path=/config --database=/data/plenti.db"]
+ENTRYPOINT ["/bin/sh", "-c", "/app/plenti save --config-path=/config"]

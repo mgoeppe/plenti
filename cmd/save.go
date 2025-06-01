@@ -77,8 +77,8 @@ var saveCmd = &cobra.Command{
 		logrus.Infof("Connected to database: %s", dbPath)
 	},
 	Run: func(cmd *cobra.Command, args []string) {
-		// Check for interval flag
-		intervalStr, _ := cmd.Flags().GetString("interval")
+		// Check for interval from viper (which includes both flag and config values)
+		intervalStr := viper.GetString("database.interval")
 
 		// If interval is not set, just run once
 		if intervalStr == "" {
