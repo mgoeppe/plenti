@@ -189,8 +189,6 @@ func saveDataOnce() {
 		return
 	}
 
-	logrus.Infof("Successfully saved %d data points to database", points)
-
 	// Print a summary if requested
 	if viper.GetBool("database.printSummary") {
 		fmt.Printf("Saved %d data points from %d modules at %s\n",
