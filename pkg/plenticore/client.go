@@ -216,6 +216,11 @@ func (c *Client) DoRequest(url string, method string, in any, out any) error {
 	}
 	defer resp.Body.Close()
 
+	// Panic if we get a 401 Unauthorized response
+	if resp.StatusCode == http.StatusUnauthorized {
+		panic(fmt.Sprintf("HTTP 401 Unauthorized: %s", resp.Status))
+	}
+
 	if resp.StatusCode != http.StatusOK {
 		return fmt.Errorf("request returned with http error %s", resp.Status)
 	}
