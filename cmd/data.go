@@ -29,7 +29,7 @@ func ParseFields() []plenticore.Fields {
 	for _, field := range viper.GetStringSlice("plenticore.fields") {
 		p := strings.SplitN(field, "/", 2)
 		if len(p) != 2 {
-			logrus.Fatal("Invalid field format: %s. Expected format is 'moduleID/fieldID'\n", field)
+			logrus.Fatalf("Invalid field format: %s. Expected format is 'moduleID/fieldID'", field)
 		}
 		moduleID, fieldID := p[0], p[1]
 		m2f[moduleID] = append(m2f[moduleID], fieldID)

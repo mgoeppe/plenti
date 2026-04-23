@@ -98,7 +98,7 @@ func NewClientOrDie(server, password string) *Client {
 	if err != nil {
 		logrus.Fatalf("could not decode signature: %v", err)
 	}
-	if bytes.Compare(signature, serverSignature) != 0 {
+	if !bytes.Equal(signature, serverSignature) {
 		logrus.Fatalf("signature mismatch: expected %x, got %x", serverSignature, signature)
 	}
 

@@ -70,10 +70,10 @@ func init() {
 	rootCmd.PersistentFlags().StringP("config-path", "c", ".", "Path to directory containing plenti.yaml config file")
 
 	// Bind flags to viper config
-	viper.BindPFlag("plenticore.server", rootCmd.PersistentFlags().Lookup("server"))
-	viper.BindPFlag("plenticore.password", rootCmd.PersistentFlags().Lookup("password"))
-	viper.BindPFlag("logLevel", rootCmd.PersistentFlags().Lookup("log-level"))
-	viper.BindPFlag("configPath", rootCmd.PersistentFlags().Lookup("config-path"))
+	_ = viper.BindPFlag("plenticore.server", rootCmd.PersistentFlags().Lookup("server"))
+	_ = viper.BindPFlag("plenticore.password", rootCmd.PersistentFlags().Lookup("password"))
+	_ = viper.BindPFlag("logLevel", rootCmd.PersistentFlags().Lookup("log-level"))
+	_ = viper.BindPFlag("configPath", rootCmd.PersistentFlags().Lookup("config-path"))
 }
 
 func initConfig() {

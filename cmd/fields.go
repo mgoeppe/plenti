@@ -26,5 +26,5 @@ func init() {
 
 	// Local flags
 	fieldsCmd.Flags().BoolP("save", "d", false, "Save field list to database")
-	viper.BindPFlag("saveFieldsToDb", fieldsCmd.Flags().Lookup("save"))
+	_ = viper.BindPFlag("saveFieldsToDb", fieldsCmd.Flags().Lookup("save"))
 }
