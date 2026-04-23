@@ -4,7 +4,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/matoubidou/plenti/pkg/plenticore"
+	"github.com/mgoeppe/plenti/pkg/plenticore"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"

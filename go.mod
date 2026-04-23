@@ -1,4 +1,4 @@
-module github.com/matoubidou/plenti
+module github.com/mgoeppe/plenti
 
 go 1.24.1
 

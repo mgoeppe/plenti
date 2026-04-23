@@ -1,3 +1,7 @@
+[![CI](https://github.com/mgoeppe/plenti/actions/workflows/ci.yml/badge.svg)](https://github.com/mgoeppe/plenti/actions/workflows/ci.yml)
+[![Go Report Card](https://goreportcard.com/badge/github.com/mgoeppe/plenti)](https://goreportcard.com/report/github.com/mgoeppe/plenti)
+[![License](https://img.shields.io/github/license/mgoeppe/plenti)](LICENSE)
+
 # Plenti <!-- omit from toc -->
 
 Plenti is a command-line tool for interacting with Kostal Plenticore inverters. It allows you to retrieve, display, and store solar power data from your Plenticore inverter through its API.
@@ -35,7 +39,7 @@ Plenti is a command-line tool for interacting with Kostal Plenticore inverters. 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/matoubidou/plenti.git
+   git clone https://github.com/mgoeppe/plenti.git
    cd plenti
    ```
 

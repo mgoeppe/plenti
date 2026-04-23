@@ -9,7 +9,7 @@ COPY . .
 ENV CGO_ENABLED=1
 RUN go build -o plenti
 
-FROM alpine:3.17
+FROM alpine:3.21
 
 RUN apk --no-cache add ca-certificates tzdata
 

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/matoubidou/plenti/cmd"
+	"github.com/mgoeppe/plenti/cmd"
 )
 
 func main() {
