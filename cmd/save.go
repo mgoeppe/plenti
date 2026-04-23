@@ -132,9 +132,9 @@ func init() {
 	saveCmd.Flags().StringP("interval", "i", "", "Run continuously with the specified interval (e.g. '30s', '5m', '1h')")
 
 	// Bind flags to viper config
-	viper.BindPFlag("database.printSummary", saveCmd.Flags().Lookup("summary"))
-	viper.BindPFlag("database.path", saveCmd.Flags().Lookup("database"))
-	viper.BindPFlag("database.interval", saveCmd.Flags().Lookup("interval"))
+	_ = viper.BindPFlag("database.printSummary", saveCmd.Flags().Lookup("summary"))
+	_ = viper.BindPFlag("database.path", saveCmd.Flags().Lookup("database"))
+	_ = viper.BindPFlag("database.interval", saveCmd.Flags().Lookup("interval"))
 }
 
 // saveDataOnce retrieves data from Plenticore and saves it to the database
