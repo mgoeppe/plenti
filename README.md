@@ -1,4 +1,5 @@
 [![CI](https://github.com/mgoeppe/plenti/actions/workflows/ci.yml/badge.svg)](https://github.com/mgoeppe/plenti/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/mgoeppe/plenti/branch/main/graph/badge.svg)](https://codecov.io/gh/mgoeppe/plenti)
 [![Go Report Card](https://goreportcard.com/badge/github.com/mgoeppe/plenti)](https://goreportcard.com/report/github.com/mgoeppe/plenti)
 [![License](https://img.shields.io/github/license/mgoeppe/plenti)](LICENSE)
 
